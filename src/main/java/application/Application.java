@@ -1,8 +1,11 @@
 package application;
 
+import application.controller.MvcConfig;
+import org.hibernate.engine.spi.PersistenceContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Import;
 
 import java.util.Arrays;
 
@@ -13,9 +16,11 @@ import java.util.Arrays;
 
 @SpringBootApplication
 public class Application {
+
+
+
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(Application.class, args);
-
 
     }
 
