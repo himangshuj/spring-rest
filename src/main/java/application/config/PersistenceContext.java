@@ -37,6 +37,11 @@ public class PersistenceContext {
     @PropertySource("classpath:application-dev.properties")
     static class ApplicationDevProperties {}
 
+    @Profile("test")
+    @Configuration
+    @PropertySource("classpath:application-dev.properties")
+    static class TestApplicationDevProperties {}
+
     private static final String[] ENTITY_PACKAGES = {
             "application.models"
     };

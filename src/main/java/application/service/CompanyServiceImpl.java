@@ -2,7 +2,9 @@ package application.service;
 
 import application.models.Company;
 import application.repositories.CompanyRepository;
+import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,8 +20,10 @@ public class CompanyServiceImpl implements CompanyService {
     private CompanyRepository companyRepository;
 
     @Override
-    public List<Company> getAllCompanies() {
-        return companyRepository.findAll();
+    public List<Company> getAllCompanies(Integer pageNo) {
+        val pageRequest = new PageRequest(pageNo,10);
+        val pageResult = companyRepository.findAll(pageRequest);
+        return pageResult.getContent();
     }
 
     @Override
@@ -41,6 +45,11 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public Integer insertOwner(Long companyId, String owner) {
         return companyRepository.addOwner(companyId,owner);
+    }
+
+    @Override
+    public Long getCompaniesCount() {
+        return companyRepository.count();
     }
 
 

@@ -28,8 +28,8 @@ public class ApiController {
     }
 
     @RequestMapping(value="/getAll")
-    public List<Company> getCompanies(){
-        return companyService.getAllCompanies();
+    public List<Company> getCompanies(@RequestParam("pageNo") Integer pageNo){
+        return companyService.getAllCompanies(pageNo);
     }
 
     @RequestMapping(value = "/details/{id}")
@@ -47,6 +47,10 @@ public class ApiController {
         return companyService.insertOwner(companyId,owner);
     }
 
+    @RequestMapping(value="/getCount")
+    public Long getCompaniesCount(){
+        return companyService.getCompaniesCount();
+    }
 
 
 }

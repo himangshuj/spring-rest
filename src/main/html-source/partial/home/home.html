@@ -1,5 +1,34 @@
-<div class="col-md-12" ng-controller="HomeCtrl">
+<div class="col-md-12">
+    <div class="col-md-6">
+        Total Companies
+    </div>
+    <div class="col-md-6">
+        {{count}}&nbsp;
+    </div>
+
     <h2>
-        List of Companies
+        List of Companies , Displaying {{companies.length}} Click to go to details
     </h2>
+
+    <ul>
+        <li ng-repeat="company in companies">
+            <a ui-sref="details({companyId:company.companyId})">
+            <div class="col-md-2">{{company.companyId}}</div>
+            <div class="col-md-2">{{company.name}}</div>
+            <div class="col-md-2">{{company.address}}</div>
+            <div class="col-md-2">{{company.country}}</div>
+            <div class="col-md-2">{{company.city}}</div>
+                </a>
+        </li>
+    </ul>
+
+    <div>
+       Go to Page:
+        <ul  class="list-inline">
+            <li ng-repeat="page in pages" ui-sref="home({pageNo:page})">
+                {{page}}
+            </li>
+        </ul>
+
+    </div>
 </div>

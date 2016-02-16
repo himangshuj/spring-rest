@@ -54,7 +54,7 @@ public class CompanyServiceImplTest {
 
     @Before
     public void setData(){
-        for(int i =0 ;i <10;i++){
+        for(int i =0 ;i <15;i++){
            companyIdList.add(companyService.saveCompany(createCompany(i)).getCompanyId());
         }
     }
@@ -63,8 +63,9 @@ public class CompanyServiceImplTest {
 
     @Test
     public void testGetAllCompanies() throws Exception {
-        final List<Company> companyProjectionList = companyService.getAllCompanies();
+        final List<Company> companyProjectionList = companyService.getAllCompanies(0);
         assertEquals(companyProjectionList.size(),10);
+        assertEquals(companyService.getAllCompanies(1).size(),5);
 
     }
 

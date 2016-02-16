@@ -1,6 +1,9 @@
 package application.repositories;
 
 import application.models.Company;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -12,6 +15,13 @@ import javax.transaction.Transactional;
  * Created by himangshu on 15/2/16.
  */
 public interface CompanyRepository extends JpaRepository<Company,Long>{
+
+    /**
+     * fetches a sub list of companies from database. If we fetch all entries we are doomed
+     * @param pageRequest the page properlist
+     * @return a subset of companies
+     */
+    Page<Company> findAll(Pageable pageRequest);
 
     /**
      * get specific company, it joins with owners

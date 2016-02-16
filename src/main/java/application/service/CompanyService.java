@@ -10,9 +10,10 @@ import java.util.List;
 public interface CompanyService {
     /**
      * fetches list of all companies from db
+     * @param pageNo the pageNumber of results to be fetched
      * @return the list of companies in db
      */
-    List<Company> getAllCompanies();
+    List<Company> getAllCompanies(Integer pageNo);
 
     /**
      * creates a new company in db
@@ -44,5 +45,11 @@ public interface CompanyService {
      * @return the number of rows added
      */
     Integer insertOwner(Long companyId,String owner);
+
+    /**
+     * queries the db to find out total number of companies
+     * @return the number of companies in db
+     */
+    Long getCompaniesCount();
 
 }
