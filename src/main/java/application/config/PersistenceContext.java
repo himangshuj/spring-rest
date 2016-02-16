@@ -18,7 +18,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 /**
- * Created by himangshu on 15/2/16.
+ * Contains configuration for hibernate and postgres
  */
 @EnableJpaRepositories(basePackages = {
         "application.repositories"

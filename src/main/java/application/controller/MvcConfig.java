@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
- * Created by himangshu on 15/2/16.
+ * This file maps static resources. This will finally be used for serving the index.html
  */
 
 @Configuration
