@@ -42,7 +42,7 @@ public class ApiController {
         return companyService.updateCompany(id,company);
     }
 
-    @RequestMapping(value = "/{id}/addOwner")
+    @RequestMapping(value = "/addOwner/{id}")
     public Integer addOwner(@PathVariable("id") Long companyId, @RequestParam("owner") String owner){
         return companyService.insertOwner(companyId,owner);
     }
