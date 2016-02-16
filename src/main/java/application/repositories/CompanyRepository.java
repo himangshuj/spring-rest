@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import javax.transaction.Transactional;
+
 /**
  * Created by himangshu on 15/2/16.
  */
@@ -16,7 +18,7 @@ public interface CompanyRepository extends JpaRepository<Company,Long>{
      * @param id the id of the company
      * @return the company object
      */
-    @Query("SELECT c FROM Company c JOIN FETCH c.owners WHERE c.companyId= (:id)")
+    @Query("SELECT c FROM Company c LEFT JOIN FETCH c.owners WHERE c.companyId= (:id)")
     Company getCompany(@Param("id") Long id);
 
     /**
@@ -33,6 +35,7 @@ public interface CompanyRepository extends JpaRepository<Company,Long>{
     @Query("UPDATE Company c SET c.name=(:name),c.address = (:address),c.city=(:city),c.country=(:country)," +
             "c.email=(:email),c.phoneNumber=(:phoneNumber) where c.companyId=(:companyId)")
     @Modifying(clearAutomatically = true)
+    @Transactional
     int updateCompany(@Param("companyId") Long companyId,
                        @Param("name") String name,
                        @Param("address") String address,
@@ -49,6 +52,7 @@ public interface CompanyRepository extends JpaRepository<Company,Long>{
      */
     @Query(value = "insert into owners(company,owners) values((:companyId),(:owner))",nativeQuery = true)
     @Modifying(clearAutomatically = true)
+    @Transactional
     int addOwner(@Param("companyId") Long companyId,@Param("owner") String owner);
 
 }
