@@ -9,8 +9,19 @@ angular.module('htmlSource').factory('api',function($http) {
             return $http.get(baseUrl+"getAll",{params:{pageNo:pageNo}});
         },
         getDetails:function(companyId){
-            return $http.get(baseUrl+'/details/'+companyId);
+            return $http.get(baseUrl+'details/'+companyId);
+        },
+        addOwner:function(companyId,owner){
+            return $http.get(baseUrl+'addOwner/'+companyId,{params:{owner:owner}});
+        },
+        add:function(details){
+            return $http.post(baseUrl+'insert',details);
+        },
+        update:function(companyId,details){
+            return $http.post(baseUrl+'update/'+companyId,details);
         }
+
+
     };
 
 	return api;

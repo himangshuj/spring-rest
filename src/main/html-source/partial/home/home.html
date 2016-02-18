@@ -13,20 +13,23 @@
     <ul>
         <li ng-repeat="company in companies">
             <a ui-sref="details({companyId:company.companyId})">
-            <div class="col-md-2">{{company.companyId}}</div>
-            <div class="col-md-2">{{company.name}}</div>
-            <div class="col-md-2">{{company.address}}</div>
-            <div class="col-md-2">{{company.country}}</div>
-            <div class="col-md-2">{{company.city}}</div>
+            {{company.companyId}}-
+            {{company.name}}-
+            {{company.address}}-
+            {{company.country}}-
+            {{company.city}}
                 </a>
         </li>
+        <li><a ui-sref="details">
+            Add Company
+        </a></li>
     </ul>
 
     <div>
        Go to Page:
         <ul  class="list-inline">
             <li ng-repeat="page in pages" ui-sref="home({pageNo:page})">
-                {{page}}
+                {{page+1}}
             </li>
         </ul>
 

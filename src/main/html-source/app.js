@@ -17,11 +17,15 @@ angular.module('htmlSource').config(function($stateProvider, $urlRouterProvider)
     });
     $stateProvider.state('details', {
         url: '/details/:companyId',
+        params: {
+            companyId: null
+        },
         templateUrl: 'partial/details/details.html',
         controller:'DetailsCtrl',
         resolve: {
             detailsResp: ['api','$stateParams', function (api,$stateParams) {
-                return api.getDetails($stateParams.companyId);
+                return ($stateParams.companyId)?
+                    api.getDetails($stateParams.companyId):{data:{owners:[]}};
             }]
         }
     });
