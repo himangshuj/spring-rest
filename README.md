@@ -38,6 +38,13 @@ email:"mail@mail.com",phoneNumber:"phoneNumber"}' ```
    
 * Add Owner 
 ```curl  http://localhost:8080/api/<<companyId>>/addOwner?owner=<<owner>>```
+
+* Using with html
+open localhost:8080 in browser 
+ * this open the paginated list of companies
+ * clicking any company opens the details form of the company which can edited
+ * new page selection can be done at home.
+ * there is a separate area in details page to add owners
   
 ## TODO Authentication
   Recommended approach will be https://github.com/spring-projects/spring-data-examples/tree/master/rest/security
