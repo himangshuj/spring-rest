@@ -28,7 +28,7 @@ import static org.junit.Assert.assertNotEquals;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @SpringApplicationConfiguration(classes = TestContext.class)
-@ActiveProfiles("dev")
+@ActiveProfiles("test")
 public class CompanyServiceImplTest {
 
     @Autowired
