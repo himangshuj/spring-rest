@@ -62,8 +62,10 @@ public class PersistenceContext {
         HikariConfig dataSourceConfig = new HikariConfig();
         dataSourceConfig.setDriverClassName(env.getRequiredProperty(PROPERTY_NAME_DB_DRIVER_CLASS));
         dataSourceConfig.setJdbcUrl(env.getRequiredProperty(PROPERTY_NAME_DB_URL));
+        if(env.getRequiredProperty(PROPERTY_NAME_DB_USER)!=null)
         dataSourceConfig.setUsername(env.getRequiredProperty(PROPERTY_NAME_DB_USER));
-        dataSourceConfig.setPassword(env.getRequiredProperty(PROPERTY_NAME_DB_PASSWORD));
+        if(env.getRequiredProperty(PROPERTY_NAME_DB_PASSWORD)!=null)
+            dataSourceConfig.setPassword(env.getRequiredProperty(PROPERTY_NAME_DB_PASSWORD));
         return new HikariDataSource(dataSourceConfig);
     }
 
